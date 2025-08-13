@@ -3,6 +3,9 @@ project:
   resources:
     - assets/**
 
+execute:
+  freeze: auto
+
 website:
   navbar:
     left:

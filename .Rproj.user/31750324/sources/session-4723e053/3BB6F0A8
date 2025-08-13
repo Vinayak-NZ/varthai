@@ -3,7 +3,7 @@
     "path": "~/Documents/macbook_air/projects/varthai/_quarto.yml",
     "project_path": "_quarto.yml",
     "type": "yaml",
-    "hash": "0",
+    "hash": "2010870225",
     "contents": "",
     "dirty": false,
     "created": 1754913729286.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "17,13",
-        "scrollLine": "2"
+        "cursorPosition": "6,14",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1754929285,
+    "lastKnownWriteTime": 1755099419,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1754929285037,
+    "last_content_update": 1755099419148,
     "read_only": false,
     "read_only_alternatives": []
 }
