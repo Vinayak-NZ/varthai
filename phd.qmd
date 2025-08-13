@@ -24,7 +24,7 @@ format:
       <h3 id="phd-seg1-title" class="visually-hidden">Research Image</h3>
       <figure class="phd-image-crop">
         <img 
-          src="assets/img/phd/sample.png" 
+          src="assets/img/phd/sample.jpeg" 
           alt="High-level visualisation or illustration of research concept" 
           class="phd-image"
           loading="lazy"
@@ -70,3 +70,4 @@ format:
   </div>
 </div>
 ```
+

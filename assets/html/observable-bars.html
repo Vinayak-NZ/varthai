@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Observable‑style Bar Chart • Cases & Modes</title>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <style>
+    :root{
+      --bg:#0b0c10;--card:#14161a;--text:#e8edf3;--muted:#9aa3ad;--grid:#23262b;
+      --fac:#8dd3c7;--cha:#fb8072;--focus:#d7f9ff;--accent:#6ec5ff;
+    }
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
+    .wrap{max-width:1000px;margin:2rem auto;padding:1rem 1.25rem;background:var(--card);border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .top{display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;justify-content:space-between}
+    h2{margin:0;font-size:1.2rem}
+    .controls{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+    select,button{background:#0f1116;border:1px solid var(--grid);color:var(--text);padding:.5rem .75rem;border-radius:12px}
+    select:focus,button:focus{outline:2px solid var(--focus);outline-offset:2px}
+    .toggle label{display:inline-flex;gap:.35rem;align-items:center;color:var(--muted);font-size:.95rem}
+    .legend{display:flex;gap:1rem;margin-top:.35rem;color:var(--muted)}
+    .legend i{display:inline-block;width:12px;height:12px;border-radius:3px}
+
+    .chart{margin-top:1rem}
+    svg{width:100%;height:auto}
+    .axis path,.axis line{stroke:var(--grid)}
+    .axis text{fill:var(--muted);font-size:.85rem}
+    .y-grid line{stroke:var(--grid)}
+
+    .bar{shape-rendering:geometricPrecision}
+    .bar.fac{fill:var(--fac)}
+    .bar.cha{fill:var(--cha)}
+    .title-line{fill:var(--muted);font-size:.9rem}
+
+    .tooltip{position:fixed;pointer-events:none;background:#0e1116;border:1px solid #27303a;color:var(--text);padding:.4rem .55rem;border-radius:8px;font-size:.9rem;opacity:0;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+
+    .sr-only{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+<div class="wrap" id="viz">
+  <div class="top">
+    <h2>Bar chart with smooth transitions</h2>
+    <div class="controls">
+      <label class="sr-only" for="caseSelect">Choose case</label>
+      <select id="caseSelect" aria-label="Choose case">
+        <option>Case A</option>
+        <option>Case B</option>
+        <option>Case C</option>
+      </select>
+      <div class="toggle" role="group" aria-label="Switch facilitators/challenges">
+        <button id="prevBtn" title="Show previous (Challenges/Facilitators)">◀</button>
+        <button id="modeBtn" aria-pressed="false">Show: Facilitators</button>
+        <button id="nextBtn" title="Show next (Challenges/Facilitators)">▶</button>
+      </div>
+    </div>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--fac)"></i> Facilitators</span>
+    <span><i style="background:var(--cha)"></i> Challenges</span>
+  </div>
+
+  <div class="chart">
+    <svg viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+      <title id="title">Interactive bar chart with transitions</title>
+      <desc id="desc">Choose a case; toggle between facilitators and challenges. Bars transition smoothly between states, inspired by Observable's bar chart transitions example.</desc>
+    </svg>
+    <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // =========================
+  // 1) DATA CONTRACT
+  // =========================
+  // Provide your counts or percentages for each case & mode.
+  // Keys (x labels) should match between modes so the transitions can morph smoothly.
+  // Replace the mock numbers with your actual frequencies from Figures 3–8.
+  const DATA = {
+    "Case A": {
+      facilitators: [
+        {key:"Co-creator exchanges", value: 38},
+        {key:"Leverage strengths",  value: 29},
+        {key:"Expectations & roles",value: 17},
+        {key:"Resources & time",    value: 9},
+        {key:"Access & context",    value: 7}
+      ],
+      challenges: [
+        {key:"Resources & time",    value: 41},
+        {key:"Access & context",    value: 23},
+        {key:"Expectations & roles",value: 19},
+        {key:"Co-creator exchanges",value: 10},
+        {key:"Leverage strengths",  value: 7}
+      ]
+    },
+    "Case B": {
+      facilitators: [
+        {key:"Leverage strengths",  value: 28},
+        {key:"Co-creator exchanges",value: 24},
+        {key:"Expectations & roles",value: 18},
+        {key:"Access & context",    value: 16},
+        {key:"Resources & time",    value: 14}
+      ],
+      challenges: [
+        {key:"Resources & time",    value: 39},
+        {key:"Expectations & roles",value: 23},
+        {key:"Co-creator exchanges",value: 20},
+        {key:"Access & context",    value: 12},
+        {key:"Leverage strengths",  value: 6}
+      ]
+    },
+    "Case C": {
+      facilitators: [
+        {key:"Co-creator exchanges",value: 34},
+        {key:"Leverage strengths",  value: 26},
+        {key:"Expectations & roles",value: 18},
+        {key:"Access & context",    value: 12},
+        {key:"Resources & time",    value: 10}
+      ],
+      challenges: [
+        {key:"Resources & time",    value: 35},
+        {key:"Access & context",    value: 21},
+        {key:"Expectations & roles",value: 18},
+        {key:"Co-creator exchanges",value: 15},
+        {key:"Leverage strengths",  value: 11}
+      ]
+    }
+  };
+
+  // If your figures are in percentages, just use the percent values (0–100). If counts, use integers.
+  const MODES = ["facilitators","challenges"]; // for left/right navigation
+
+  // =========================
+  // 2) CHART SCAFFOLD
+  // =========================
+  const svg = d3.select("svg"), tt = d3.select("#tooltip");
+  const margin = {top: 40, right: 24, bottom: 80, left: 64};
+  const width  = 960 - margin.left - margin.right;
+  const height = 560 - margin.top - margin.bottom;
+  const g = svg.append("g").attr("transform",`translate(${margin.left},${margin.top})`);
+  const yGridG = g.append("g").attr("class","y-grid");
+  const xAxisG = g.append("g").attr("class","axis x").attr("transform",`translate(0,${height})`);
+  const yAxisG = g.append("g").attr("class","axis y");
+  const barsG  = g.append("g").attr("class","bars");
+  const titleG = g.append("text").attr("class","title-line").attr("x",0).attr("y",-12);
+
+  const x = d3.scaleBand().range([0,width]).padding(0.12);
+  const y = d3.scaleLinear().range([height,0]);
+
+  const xAxis = d3.axisBottom(x).tickSizeOuter(0);
+  const yAxis = d3.axisLeft(y).ticks(6).tickSizeOuter(0);
+  const yGrid = d3.axisLeft(y).ticks(6).tickSize(-width).tickFormat("");
+
+  let currentCase = "Case A";
+  let currentMode = "facilitators"; // or "challenges"
+
+  // =========================
+  // 3) RENDER FUNCTION (Observable‑style transitions)
+  // =========================
+  const T = 800; // transition ms
+
+  function render(){
+    const series = DATA[currentCase][currentMode].slice();
+    // Sort descending for the classic Observable vibe
+    series.sort((a,b)=> d3.descending(a.value,b.value));
+
+    // scales
+    x.domain(series.map(d=>d.key));
+    const yMax = Math.max(10, d3.max(series, d=>d.value)||10);
+    y.domain([0, yMax * 1.1]);
+
+    // axes + grid
+    yGridG.transition().duration(T).call(yGrid);
+    yAxisG.transition().duration(T).call(yAxis);
+    xAxisG.transition().duration(T).call(xAxis)
+      .selectAll("text").attr("text-anchor","end").attr("transform","rotate(-26)");
+
+    // title
+    titleG.text(`${currentCase} — ${capitalize(currentMode)}`);
+
+    // DATA JOIN keyed by label
+    const bars = barsG.selectAll("rect.bar").data(series, d=>d.key);
+
+    // EXIT
+    bars.exit()
+      .transition().duration(T)
+      .attr("y", y(0)).attr("height", y(0)-y(0)).style("opacity",0)
+      .remove();
+
+    // UPDATE
+    bars.transition().duration(T)
+      .attr("x", d=>x(d.key))
+      .attr("width", x.bandwidth())
+      .attr("y", d=> y(d.value))
+      .attr("height", d=> y(0)-y(d.value))
+      .attr("class", d=> `bar ${currentMode==='facilitators'?'fac':'cha'}`);
+
+    // ENTER
+    bars.enter().append("rect")
+      .attr("class", d=> `bar ${currentMode==='facilitators'?'fac':'cha'}`)
+      .attr("x", d=>x(d.key))
+      .attr("y", y(0)).attr("height",0)
+      .attr("width", x.bandwidth())
+      .on("mousemove", (event,d)=>{
+        tt.style("opacity",1)
+          .style("left", (event.clientX+12)+"px")
+          .style("top", (event.clientY-12)+"px")
+          .html(`<strong>${d.key}</strong><br>${capitalize(currentMode)}: ${d.value}`);
+      })
+      .on("mouseleave", ()=> tt.style("opacity",0))
+      .transition().duration(T)
+      .attr("y", d=> y(d.value))
+      .attr("height", d=> y(0)-y(d.value));
+  }
+
+  function capitalize(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+
+  // =========================
+  // 4) INTERACTION (Dropdown, buttons, keyboard, swipe)
+  // =========================
+  const caseSelect = document.getElementById('caseSelect');
+  const modeBtn    = document.getElementById('modeBtn');
+  const prevBtn    = document.getElementById('prevBtn');
+  const nextBtn    = document.getElementById('nextBtn');
+
+  caseSelect.addEventListener('change', ()=>{ currentCase = caseSelect.value; render(); });
+
+  function setMode(mode){
+    currentMode = mode;
+    modeBtn.textContent = `Show: ${capitalize(currentMode)}`;
+    modeBtn.setAttribute('aria-pressed', String(currentMode==='facilitators'));
+    render();
+  }
+
+  function toggleMode(){
+    const i = MODES.indexOf(currentMode);
+    const next = MODES[(i+1)%MODES.length];
+    setMode(next);
+  }
+
+  modeBtn.addEventListener('click', toggleMode);
+  prevBtn.addEventListener('click', ()=> setMode(MODES[(MODES.indexOf(currentMode)-1+MODES.length)%MODES.length]));
+  nextBtn.addEventListener('click', toggleMode);
+
+  // Keyboard: Left/Right toggles mode; 1/2/3 switches case
+  window.addEventListener('keydown', (e)=>{
+    if(e.key==='ArrowLeft' || e.key==='ArrowRight') toggleMode();
+    if(['1','2','3'].includes(e.key)){
+      const cases = ['Case A','Case B','Case C'];
+      currentCase = cases[+e.key-1];
+      caseSelect.value = currentCase; render();
+    }
+  });
+
+  // Touch swipe
+  let touchX=null;
+  svg.on('touchstart', (e)=>{ touchX = e.touches[0].clientX; });
+  svg.on('touchend', (e)=>{
+    if(touchX==null) return; const dx = (e.changedTouches[0].clientX - touchX);
+    if(Math.abs(dx) > 40) toggleMode();
+    touchX = null;
+  });
+
+  // initial draw
+  render();
+})();
+</script>
+</body>
+</html>
