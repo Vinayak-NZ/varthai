@@ -1,0 +1,78 @@
+(function () {
+  function fmt(t) {
+    if (!isFinite(t)) return "0:00";
+    const m = Math.floor(t / 60);
+    const s = Math.floor(t % 60).toString().padStart(2, "0");
+    return `${m}:${s}`;
+  }
+
+  function init() {
+    const audioEl = document.getElementById("about-audio");
+    const playBtn = document.getElementById("btnPlay");
+    const timeEl  = document.getElementById("time");
+    const transcript = document.getElementById("transcript");
+    if (!audioEl || !playBtn || !timeEl) return;
+
+    // Create WaveSurfer
+    const ws = WaveSurfer.create({
+      container: "#waveform",
+      waveColor: "#c9c9cf",
+      progressColor: "#111111",
+      cursorColor: "#111111",
+      height: 120,
+      barWidth: 2,
+      barGap: 2,
+      responsive: true,
+      backend: "mediaelement", // reuse the <audio> element
+      mediaControls: false,
+      url: audioEl.getAttribute("src")
+    });
+
+    // Control button
+    playBtn.addEventListener("click", () => ws.playPause());
+    ws.on("play",  () => playBtn.textContent = "Pause");
+    ws.on("pause", () => playBtn.textContent = "Play");
+
+    // Time display
+    let duration = 0;
+    ws.on("ready", () => {
+      duration = ws.getDuration();
+      timeEl.textContent = `0:00 / ${fmt(duration)}`;
+    });
+    ws.on("audioprocess", (t) => {
+      timeEl.textContent = `${fmt(t)} / ${fmt(duration)}`;
+      highlightTranscript(t);
+    });
+    ws.on("seek", (p) => {
+      const t = p * duration;
+      timeEl.textContent = `${fmt(t)} / ${fmt(duration)}`;
+      highlightTranscript(t);
+    });
+
+    // Transcript: click to seek
+    function highlightTranscript(current) {
+      if (!transcript) return;
+      const lines = transcript.querySelectorAll("p[data-start][data-end]");
+      lines.forEach(p => {
+        const start = parseFloat(p.dataset.start);
+        const end   = parseFloat(p.dataset.end);
+        const active = current >= start && current < end;
+        p.classList.toggle("active", active);
+      });
+    }
+    if (transcript) {
+      transcript.addEventListener("click", (e) => {
+        const p = e.target.closest("p[data-start]");
+        if (!p) return;
+        const start = parseFloat(p.dataset.start);
+        if (isFinite(start)) ws.setTime(start);
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();

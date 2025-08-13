@@ -1,0 +1,98 @@
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script>
+(function () {
+  const el = document.getElementById('phd-bar');
+  if (!el) return;
+
+  // Dummy data
+  const data = [
+    { label: 'A', value: 12 },
+    { label: 'B', value: 35 },
+    { label: 'C', value: 22 },
+    { label: 'D', value: 44 },
+    { label: 'E', value: 18 },
+    { label: 'F', value: 29 }
+  ];
+
+  // Tooltip element (one per page)
+  let tip = document.querySelector('.d3-tip');
+  if (!tip) {
+    tip = document.createElement('div');
+    tip.className = 'd3-tip';
+    tip.style.opacity = 0;
+    document.body.appendChild(tip);
+  }
+
+  function render() {
+    // Clear prior render
+    el.innerHTML = '';
+
+    const width  = el.clientWidth || 600;
+    const height = el.clientHeight || 320;
+
+    const margin = { top: 16, right: 16, bottom: 40, left: 44 };
+    const w = width  - margin.left - margin.right;
+    const h = height - margin.top  - margin.bottom;
+
+    const svg = d3.select(el).append('svg')
+      .attr('width', width)
+      .attr('height', height);
+
+    const g = svg.append('g')
+      .attr('transform', `translate(${margin.left},${margin.top})`);
+
+    const x = d3.scaleBand()
+      .domain(data.map(d => d.label))
+      .range([0, w])
+      .padding(0.2);
+
+    const y = d3.scaleLinear()
+      .domain([0, d3.max(data, d => d.value)]).nice()
+      .range([h, 0]);
+
+    g.append('g')
+      .attr('transform', `translate(0,${h})`)
+      .call(d3.axisBottom(x));
+
+    g.append('g')
+      .call(d3.axisLeft(y).ticks(6));
+
+    const bars = g.selectAll('.bar')
+      .data(data)
+      .enter()
+      .append('rect')
+      .attr('class', 'bar')
+      .attr('x', d => x(d.label))
+      .attr('y', h)
+      .attr('width', x.bandwidth())
+      .attr('height', 0)
+      .attr('fill', '#69b3a2') // you can remove this to use default theme colour
+      .on('mousemove', (event, d) => {
+        tip.style.opacity = 1;
+        tip.textContent = `${d.label}: ${d.value}`;
+        tip.style.left = event.pageX + 'px';
+        tip.style.top  = event.pageY + 'px';
+      })
+      .on('mouseleave', () => { tip.style.opacity = 0; });
+
+    // Animate bars
+    bars.transition()
+      .duration(600)
+      .attr('y', d => y(d.value))
+      .attr('height', d => h - y(d.value));
+  }
+
+  // Initial render
+  render();
+
+  // Re-render on size changes
+  const ro = new ResizeObserver(render);
+  ro.observe(el);
+
+  // Re-render when the grid toggles expanded/collapsed (width/height changes)
+  const grid = document.querySelector('.phd-grid');
+  if (grid) {
+    new MutationObserver(render).observe(grid, { attributes: true, attributeFilter: ['class'] });
+  }
+})();
+</script>

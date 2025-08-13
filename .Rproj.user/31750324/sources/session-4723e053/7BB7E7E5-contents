@@ -1,0 +1,22 @@
+project:
+  type: website
+
+website:
+  title: "varthai"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+
+include-in-header:
+  - text: |
+      <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>

@@ -1,0 +1,22 @@
+(function () {
+  function init() {
+    var el = document.getElementById('typed-output');
+    if (!el || !window.Typed) return;
+    new Typed('#typed-output', {
+      strings: ['வார்த்தை','Varthai'],
+      typeSpeed: 500,
+      backSpeed: 300,
+      backDelay: 1200,
+      startDelay: 350,
+      smartBackspace: true,
+      showCursor: true,
+      cursorChar: '_',
+      loop: true
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
