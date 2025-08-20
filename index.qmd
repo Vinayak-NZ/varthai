@@ -1,6 +1,5 @@
 ---
 title: ""
-title-block-banner: false
 page-layout: full
 format:
   html:
@@ -9,13 +8,11 @@ format:
       - styles.css
     include-after-body:
       - text: |
-          <script defer src="assets/js/typed.min.js"></script>
+          <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
           <script defer src="assets/js/init-typed.js"></script>
           <script defer src="assets/js/wavesurfer.min.js"></script>
           <script defer src="assets/js/init-audio.js"></script>
 ---
-
-THIS IS A TEST LINE
 
 ```{=html}
 <!-- ===== Varthai (edge-to-edge black) ===== -->
