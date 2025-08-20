@@ -1,5 +1,6 @@
 ---
 title: ""
+title-block-style: none
 page-layout: full
 format:
   html:
@@ -8,7 +9,7 @@ format:
       - styles.css
     include-after-body:
       - text: |
-          <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+          <script defer src="assets/js/typed.min.js"></script>
           <script defer src="assets/js/init-typed.js"></script>
           <script defer src="assets/js/wavesurfer.min.js"></script>
           <script defer src="assets/js/init-audio.js"></script>
@@ -20,7 +21,7 @@ format:
   <div class="column-page p-0">
     <div class="min-vh-100 w-100 d-flex justify-content-center align-items-center m-0">
       <h1 id="hero-title" class="fw-bold text-center">
-        <span id="typed-output" aria-live="polite">Varthai</span>
+        <span id="typed-output">Varthai</span>
       </h1>
     </div>
   </div>
