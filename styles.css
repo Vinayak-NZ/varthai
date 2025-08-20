@@ -40,6 +40,11 @@ body {
   color: var(--color-white);
 }
 
+#typed-output {
+  min-height: 1em;
+  display: inline-block;
+}
+
 .typed-cursor {
   margin-left: .1em;
   font-weight: 500;
