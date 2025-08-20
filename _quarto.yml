@@ -21,7 +21,3 @@ format:
     toc: true
 
 editor: visual
-
-include-in-header:
-  - text: |
-      <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
