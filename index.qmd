@@ -19,7 +19,7 @@ format:
 <!-- ===== Varthai (edge-to-edge black) ===== -->
 <section class="page-columns page-full bg-black text-white" aria-labelledby="hero-title">
   <div class="column-page p-0">
-    <div class="min-vh-100 w-100 d-flex justify-content-center align-items-center m-0">
+    <div style="height: 100vh;" class="w-100 d-flex justify-content-center align-items-center m-0">
       <h1 id="hero-title" class="fw-bold text-center">
         <span id="typed-output">Varthai</span>
       </h1>
