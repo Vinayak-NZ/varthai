@@ -62,6 +62,10 @@ body {
    Layout helpers
    ========================================================================== */
 
+#title-block-header {
+  display: none !important;
+}
+
 /* Full-bleed: make a block span the viewport width even inside a centered container */
 .full-bleed {
   position: relative;

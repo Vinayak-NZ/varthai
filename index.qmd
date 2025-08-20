@@ -1,18 +1,16 @@
 ---
 title: ""
+title-block: false
 title-block-style: none
 page-layout: full
 format:
   html:
     theme: cosmo
-    css:
-      - styles.css
+    css: styles.css
     include-after-body:
       - text: |
-          <script defer src="assets/js/typed.min.js"></script>
+          <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
           <script defer src="assets/js/init-typed.js"></script>
-          <script defer src="assets/js/wavesurfer.min.js"></script>
-          <script defer src="assets/js/init-audio.js"></script>
 ---
 
 ```{=html}
@@ -21,7 +19,7 @@ format:
   <div class="column-page p-0">
     <div style="height: 100vh;" class="w-100 d-flex justify-content-center align-items-center m-0">
       <h1 id="hero-title" class="fw-bold text-center">
-        boo
+        <span id="typed-output">boo</span>
       </h1>
     </div>
   </div>
