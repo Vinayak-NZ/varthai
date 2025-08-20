@@ -21,9 +21,7 @@ format:
   <div class="column-page p-0">
     <div class="min-vh-100 w-100 d-flex justify-content-center align-items-center m-0">
       <h1 id="hero-title" class="fw-bold text-center">
-        <span id="typed-output" aria-live="polite">
-          <span class="typed-fallback">Varthai</span>
-        </span>
+        <span id="typed-output" aria-live="polite">Varthai</span>
       </h1>
     </div>
   </div>
