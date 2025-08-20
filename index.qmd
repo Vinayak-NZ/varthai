@@ -1,5 +1,6 @@
 ---
 title: ""
+title-block-banner: false
 page-layout: full
 format:
   html:
