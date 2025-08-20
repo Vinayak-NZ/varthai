@@ -45,6 +45,14 @@ body {
   font-weight: 500;
 }
 
+/* Fallback visibility for typed text */
+.typed-fallback {
+  opacity: 0;
+  display: inline-block;
+  height: 1em; /* ensures height remains */
+  pointer-events: none;
+}
+
 /* ==========================================================================
    Layout helpers
    ========================================================================== */
