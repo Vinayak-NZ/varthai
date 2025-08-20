@@ -21,7 +21,7 @@ format:
   <div class="column-page p-0">
     <div style="height: 100vh;" class="w-100 d-flex justify-content-center align-items-center m-0">
       <h1 id="hero-title" class="fw-bold text-center">
-        <span id="typed-output">Varthai</span>
+        boo
       </h1>
     </div>
   </div>
