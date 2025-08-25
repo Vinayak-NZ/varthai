@@ -130,7 +130,7 @@ body {
 /* Social icon grid */
 .social-logos {
   display: grid;
-  grid-template-columns: repeat(5, minmax(64px, 96px));
+  grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
   gap: 1.25rem;
   justify-content: center;
 }
