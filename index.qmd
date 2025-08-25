@@ -1,5 +1,5 @@
 ---
-title: ""
+title: " "
 page-layout: full
 format:
   html:
