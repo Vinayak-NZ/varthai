@@ -40,31 +40,14 @@ body {
   color: var(--color-white);
 }
 
-#typed-output {
-  min-height: 1em;
-  display: inline-block;
-}
-
 .typed-cursor {
   margin-left: .1em;
   font-weight: 500;
 }
 
-/* Fallback visibility for typed text */
-.typed-fallback {
-  opacity: 0;
-  display: inline-block;
-  height: 1em; /* ensures height remains */
-  pointer-events: none;
-}
-
 /* ==========================================================================
    Layout helpers
    ========================================================================== */
-
-#title-block-header {
-  display: none !important;
-}
 
 /* Full-bleed: make a block span the viewport width even inside a centered container */
 .full-bleed {
