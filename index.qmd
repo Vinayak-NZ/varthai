@@ -89,7 +89,7 @@ format:
   <div class="column-page p-0">
     <div class="container py-5">
       <h2 class="h1 mb-4">Reach out</h2>
-      <p class="text-muted mb-4">You can find me or some of my work here:</p>
+      <p class="text-muted mb-4">You can find me, some of my work here or my collaborators here:</p>
       <div class="social-logos">
         <a href="https://www.linkedin.com/in/vinayak-anand-kumar-de" target="_blank" rel="noopener">
           <img src="assets/img/icons/linkedin.svg" alt="LinkedIn">

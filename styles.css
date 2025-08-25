@@ -275,50 +275,149 @@ body {
 
 /* ------------------------------- Chart --------------------------------- */
 
+/* Base container */
 .chart-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
-/* Collapsed: centred, smaller chart */
+/* Collapsed state:
+   - show the first graph as a thumbnail
+   - hide the slider UI */
+.phd-item--chart .chart-thumb { display: block; width: 100%; height: auto; }
+.phd-item--chart .slider      { display: none; }
+
+/* Expanded state:
+   - hide thumb, show slider
+   - stack links directly under slider, right-aligned, no gap */
+.phd-grid.expanded-mode .phd-item.expanded.phd-item--chart .chart-thumb { display: none; }
+.phd-grid.expanded-mode .phd-item.expanded.phd-item--chart .slider {
+  display: block;
+  width: min(900px, 88vw);
+  margin: 0; /* no extra gap above dots/footer */
+}
+
+/* Slider layout */
+.slider {
+  position: relative;
+  overflow: hidden;   /* container clips the moving track */
+}
+
+.slides {
+  display: flex;
+  /* overflow: hidden;  <-- removed */
+  width: 100%;
+  touch-action: pan-y;
+  margin: 0;
+  padding: 0;
+}
+
+.slide {
+  min-width: 100%;
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+/* Nav arrows */
+.slider .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  border: 0;
+  width: 2.25rem; height: 2.25rem;
+  border-radius: 999px;
+  display: grid; place-items: center;
+  cursor: pointer;
+}
+
+/* Arrow positions — responsive spacing */
+.slider .nav.prev { left: 1.25rem; }   /* default (tablets) */
+.slider .nav.next { right: 1.25rem; }
+.slider .nav { z-index: 3; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+
+/* Phones: keep arrows close so they don’t fall off-screen */
+@media (max-width: 640px) {
+  .slider .nav { width: 2rem; height: 2rem; }
+  .slider .nav.prev { left: 0.5rem; }
+  .slider .nav.next { right: 0.5rem; }
+}
+
+/* Desktops: push arrows outside the image for more whitespace */
+@media (min-width: 1024px) {
+  .slider .nav.prev { left: -2.75rem; }   /* sit just outside the content */
+  .slider .nav.next { right: -2.75rem; }
+}
+
+/* Dots */
+.slider .dots {
+  display: flex;
+  gap: .4rem;
+  justify-content: center;
+  margin-top: .5rem; /* sits snug under the image */
+}
+.slider .dots button {
+  width: .5rem; height: .5rem;
+  border-radius: 999px;
+  border: 0;
+  background: #cfcfcf;
+  cursor: pointer;
+}
+.slider .dots button[aria-selected="true"] { background: #4739a2; }
+
+/* Footer directly under slider, stacked vertically, aligned right */
+.phd-grid.expanded-mode .phd-item.expanded.phd-item--chart .phd-footer {
+  position: static;          /* stay in normal flow */
+  display: flex;
+  flex-direction: column;    /* stack links */
+  align-items: flex-end;     /* right align */
+  gap: 0.25rem;              /* tiny space between links */
+  margin: 0; padding: 0;     /* no extra gap */
+}
+
+/* (Optional) Keep support for a D3 chart if you switch back later */
 .phd-grid:not(.expanded-mode) .chart {
   width: 70%;
   max-width: 560px;
   height: 260px;
 }
-
-/* Expanded: larger chart */
-.phd-grid.expanded-mode .phd-item.expanded.phd-item--chart .chart-card {
-  display: flex;
-  flex-direction: column;   /* stack chart and footer vertically */
-  align-items: flex-end;    /* right-align footer links */
-  justify-content: flex-start;
-  width: 100%;
-  height: auto;             /* allow height to adjust to chart */
-  margin: 0;
-  padding: 0;
-}
-
 .phd-grid.expanded-mode .phd-item.expanded.phd-item--chart .chart {
   width: 100%;
   height: 520px;
-  margin-bottom: 0;         /* remove default gap under chart */
+  margin-bottom: 0;
 }
 
-/* Footer directly under chart, stacked vertically, aligned right */
-.phd-grid.expanded-mode .phd-item.expanded.phd-item--chart .phd-footer {
-  position: static;         /* stay in flow */
+/* Expanded chart layout: stack slider and footer, no gaps */
+.phd-grid.expanded-mode .phd-item.expanded.phd-item--chart .chart-card {
   display: flex;
-  flex-direction: column;   /* stack links */
-  align-items: flex-end;    /* right-align text */
-  gap: 0.25rem;              /* small gap between links */
+  flex-direction: column;
+  align-items: stretch;     /* slider full width */
+  justify-content: flex-start;
+  gap: 0;                   /* no gap between slider and footer */
   margin: 0;
   padding: 0;
 }
 
-/* D3 tooltip */
+.phd-grid.expanded-mode .phd-item.expanded.phd-item--chart .slider {
+  display: block;
+  width: min(900px, 88vw);
+  margin: 0;
+  align-self: center;       /* keep slider centered in the card */
+}
+
+/* D3 tooltip (harmless if not using D3) */
 .d3-tip {
   position: absolute;
   z-index: 10;
@@ -342,14 +441,14 @@ body {
   display: none;
 }
 
-/* Expanded cards become positioning anchors */
+/* Expanded cards anchor positioned children */
 .phd-grid.expanded-mode .phd-item.expanded {
   position: relative;
 }
 
-/* ===== Case 1: Image card ===== */
+/* ===== Image card (artwork): footer & signature over the image ===== */
 .phd-grid.expanded-mode .phd-item.expanded .phd-image-crop {
-  position: relative; /* anchor links/signature to image */
+  position: relative; /* anchor to image */
 }
 
 .phd-grid.expanded-mode .phd-item.expanded .phd-image-crop .phd-footer {
@@ -375,49 +474,25 @@ body {
   filter: brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,.35)); /* white */
 }
 
-/* ===== Case 2: Poem card ===== */
-.phd-grid.expanded-mode .phd-item.expanded:not(:has(.phd-image-crop)) .phd-footer {
-  position: absolute;
-  left: 1rem;
-  bottom: 1rem;
-  z-index: 2;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
+/* ===== Poem card: footer sits directly under the poem, centered ===== */
 .phd-grid.expanded-mode .phd-item.expanded.phd-item--poem .poem {
-  display: block;         
+  display: block;           /* normal flow */
   text-align: center;
-  min-height: auto;       
-  margin-bottom: 0.5rem;  
+  min-height: auto;         /* no full-screen stretch */
+  margin-bottom: 0.5rem;    /* snug gap before links */
 }
 
 .phd-grid.expanded-mode .phd-item.expanded.phd-item--poem .phd-footer {
-  position: static;       
-  left: auto;
-  bottom: auto;
-  z-index: auto;
-  display: flex;          
-  flex-wrap: wrap;
-  justify-content: center; /* <-- centres the link horizontally */
-  gap: 0.75rem;
-  margin-top: 0;          
-}
-
-/* ===== Case 3: Poem card ===== */
-.phd-grid.expanded-mode .phd-item.expanded.phd-item--chart .chart-card {
-  margin-bottom: 0; /* no extra space before links */
-}
-
-.phd-grid.expanded-mode .phd-item.expanded.phd-item--chart .phd-footer {
-  position: static;           /* normal flow below chart */
+  position: static;         /* not absolute — sits under poem */
   display: flex;
-  flex-direction: column;     /* stack vertically */
-  align-items: flex-end;      /* align to right */
-  gap: 0.25rem;                /* small gap between links */
-  margin-top: 0;               /* remove extra space */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
 }
+
+/* ===== Chart card: (handled in Chart section) — no rules here ===== */
 
 /* -------------------------
    LINK COLOURS
@@ -453,12 +528,11 @@ body {
    RESPONSIVE TWEAKS
    ------------------------- */
 @media (max-width: 640px) {
-  .phd-grid.expanded-mode .phd-item.expanded .phd-image-crop .phd-footer,
-  .phd-grid.expanded-mode .phd-item.expanded .phd-footer {
+  /* Only adjust image-anchored items */
+  .phd-grid.expanded-mode .phd-item.expanded .phd-image-crop .phd-footer {
     left: 0.75rem;
     bottom: 0.75rem;
   }
-
   .phd-grid.expanded-mode .phd-item.expanded .phd-image-crop .phd-signature {
     right: 0.75rem;
     bottom: 0.75rem;

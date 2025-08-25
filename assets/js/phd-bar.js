@@ -1,5 +1,4 @@
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-<script>
 (function () {
   const el = document.getElementById('phd-bar');
   if (!el) return;
@@ -102,4 +101,3 @@
     new MutationObserver(render).observe(grid, { attributes: true, attributeFilter: ['class'] });
   }
 })();
-</script>
