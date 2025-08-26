@@ -7,7 +7,7 @@
     const originalText = el.innerText;
 
     new Typed('#typed-output', {
-      strings: ['வார்த்தை', originalText],
+      strings: ['வார்த்தை', 'varthai'],
       typeSpeed: 300,
       backSpeed: 300,
       backDelay: 1200,

@@ -527,14 +527,59 @@ body {
 /* -------------------------
    RESPONSIVE TWEAKS
    ------------------------- */
-@media (max-width: 640px) {
-  /* Only adjust image-anchored items */
+@media (max-width: 640px), (max-width: 768px) and (orientation: portrait) {
+
+  /* 1) Stack the three cards */
+  .phd-grid {
+    grid-template-columns: 1fr;     /* one column */
+    gap: 0;
+  }
+
+  /* 2) Comfortable padding for small screens */
+  .phd-item {
+    padding: 1rem;
+    max-height: none;
+  }
+
+  /* 3) Expanded card: reduce inner padding */
+  .phd-grid.expanded-mode .phd-item.expanded {
+    padding: 1.25rem;
+    min-height: 100svh;
+  }
+
+  /* 4) Image slice shorter teaser height */
+  .phd-image-crop {
+    height: 50vh;
+    margin-bottom: 0.5rem;
+  }
+
+  /* 5) Poem typography tweaks */
+  .poem-first {
+    font-size: clamp(1.75rem, 10vw, 2.5rem);
+  }
+  .phd-grid.expanded-mode .phd-item.expanded .poem-first {
+    font-size: clamp(1.25rem, 4.5vw, 1.75rem);
+  }
+  .phd-grid.expanded-mode .phd-item.expanded .poem-rest {
+    font-size: 1rem;
+  }
+
+  /* 6) Slider arrows & dots compact */
+  .slider { padding-inline: 0.5rem; }
+  .slider .nav { width: 2rem; height: 2rem; }
+  .slider .dots { margin-top: 0.35rem; }
+
+  /* 7) Footer links & signature adjustments */
+  .phd-grid.expanded-mode .phd-item.expanded .phd-footer {
+    gap: 0.5rem;
+  }
   .phd-grid.expanded-mode .phd-item.expanded .phd-image-crop .phd-footer {
-    left: 0.75rem;
-    bottom: 0.75rem;
+    left: 0.5rem;
+    bottom: 0.5rem;
   }
   .phd-grid.expanded-mode .phd-item.expanded .phd-image-crop .phd-signature {
-    right: 0.75rem;
-    bottom: 0.75rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    width: clamp(1.5rem, 14vw, 3rem);
   }
 }
