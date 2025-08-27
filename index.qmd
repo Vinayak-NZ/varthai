@@ -9,6 +9,7 @@ format:
     include-after-body:
       - text: |
           <script defer src="assets/js/typed.min.js"></script>
+          <script defer src="assets/js/init-scroll.js"></script>
           <script defer src="assets/js/init-typed.js"></script>
           <script defer src="assets/js/wavesurfer.min.js"></script>
           <script defer src="assets/js/init-audio.js"></script>
@@ -23,11 +24,14 @@ format:
         <span id="typed-output" aria-live="polite"></span>
       </h1>
     </div>
+    <div class="scroll-down">
+      <span class="arrow">V</span>
+    </div>
   </div>
 </section>
 
 <!-- ===== About (edge-to-edge grey with audio intro) ===== -->
-<section class="page-columns page-full bg-grey-f5" aria-labelledby="about-title">
+<section id="about" class="page-columns page-full bg-grey-f5" aria-labelledby="about-title">
   <div class="column-page p-0">
     <div class="container py-5">
       <h2 id="about-title" class="h1 mb-4">About</h2>
@@ -45,6 +49,7 @@ format:
             <div id="time" class="text-muted small" aria-live="polite">0:00 / 0:00</div>
             <div class="ms-auto small text-muted">Intro to Varthai</div>
           </div>
+          
         </div>
 
 

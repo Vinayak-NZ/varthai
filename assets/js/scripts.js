@@ -1,46 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const grid = document.querySelector('.phd-grid');
-  if (!grid) return;
+  // For each grid (skip the static/no-expand grids)
+  document.querySelectorAll('.phd-grid').forEach((grid) => {
+    if (grid.classList.contains('no-expand')) return;
 
-  function collapseAll({ scroll = true } = {}) {
-    grid.classList.remove('expanded-mode');
-    grid.querySelectorAll('.phd-item.expanded').forEach(i => i.classList.remove('expanded'));
-    if (scroll) window.scrollTo({ top: grid.offsetTop, behavior: 'smooth' });
-  }
+    const section = grid.closest('.full-bleed') || grid.parentElement;
 
-  grid.addEventListener('click', (e) => {
-    const card = e.target.closest('.phd-item');
-    if (!card) return;
-
-    const isExpandedMode = grid.classList.contains('expanded-mode');
-    const isOpen = card.classList.contains('expanded');
-
-    // While EXPANDED, ignore clicks on interactive UI (slider/arrows/dots/links)
-    // This prevents collapsing when swiping or using the controls.
-    if (isExpandedMode && e.target.closest('.slider, .slides, .slide, .nav, .dots, .phd-link, a, button')) {
-      return;
-    }
-    // Note: when COLLAPSED we *do not* guard; clicking the card (incl. chart thumb) will expand.
-
-    // Toggle behaviour
-    collapseAll({ scroll: false });
-    if (isOpen) {
+    const collapseAll = () => {
+      grid.querySelectorAll('.phd-item.expanded').forEach(i => i.classList.remove('expanded'));
       grid.classList.remove('expanded-mode');
-      window.scrollTo({ top: grid.offsetTop, behavior: 'smooth' });
-      grid.dispatchEvent(new CustomEvent('phd:collapsed', { detail: { card } }));
-    } else {
-      card.classList.add('expanded');
-      grid.classList.add('expanded-mode');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      grid.dispatchEvent(new CustomEvent('phd:expanded', { detail: { card } }));
-    }
+      syncSectionZ();
+    };
+
+    const syncSectionZ = () => {
+      const expanded = grid.classList.contains('expanded-mode');
+      // Remove the helper from all sections first
+      document.querySelectorAll('.full-bleed').forEach(s => s.classList.remove('section-on-top'));
+      if (expanded && section) section.classList.add('section-on-top');
+    };
+
+    // Click to expand/collapse in-place
+    grid.addEventListener('click', (e) => {
+      // Ignore clicks inside interactive areas of an expanded card
+      if (e.target.closest('.slider') || e.target.closest('.phd-footer')) return;
+
+      const card = e.target.closest('.phd-item');
+      if (!card || !grid.contains(card)) return;
+
+      const isOpen = card.classList.contains('expanded');
+      collapseAll();
+
+      if (!isOpen) {
+        card.classList.add('expanded');
+        grid.classList.add('expanded-mode');
+        syncSectionZ();
+        // Scroll the opened card into view neatly
+        requestAnimationFrame(() => {
+          card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    });
+
+    // Keep z-index helper in sync if classes change
+    new MutationObserver(syncSectionZ).observe(grid, { attributes: true, attributeFilter: ['class'] });
+    syncSectionZ();
   });
 
-  // Esc to collapse
+  // ESC closes whichever grid is expanded (and scrolls back to that grid)
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && grid.classList.contains('expanded-mode')) {
-      collapseAll();
-      grid.dispatchEvent(new CustomEvent('phd:collapsed', { detail: { card: null } }));
-    }
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.phd-grid.expanded-mode').forEach((grid) => {
+      grid.classList.remove('expanded-mode');
+      grid.querySelectorAll('.phd-item').forEach(i => i.classList.remove('expanded'));
+      const section = grid.closest('.full-bleed');
+      if (section) section.classList.remove('section-on-top');
+      grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Safety: cancel naked "#" links so they never jump the page to top
+  document.addEventListener('click', (e) => {
+    const bad = e.target.closest('a[href="#"]');
+    if (bad) { e.preventDefault(); e.stopPropagation(); }
   });
 });

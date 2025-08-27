@@ -58,6 +58,27 @@ body {
   font-weight: 500;
 }
 
+.scroll-down {
+  position: absolute;
+  bottom: 20px;       /* distance from bottom of hero */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.scroll-down .arrow {
+  font-size: 2rem;     /* size of the "V" arrow */
+  color: #fff;         /* white */
+  animation: pulse 1.5s infinite;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  50%  { transform: translateY(5px) scale(1.1); opacity: 0.7; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
 /* ==========================================================================
    Layout helpers
    ========================================================================== */
@@ -153,6 +174,40 @@ body {
   height: auto;
 }
 
+/* ================================
+   Static (non-expandable) text cols
+   ================================ */
+
+/* Static (non-expandable) text columns */
+.static-item {
+  background: #000 !important;  /* black columns */
+  color: #fff !important;       /* white text */
+  cursor: default;
+  max-height: none;
+  transition: none;
+
+  /* center content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* fixed-but-responsive height */
+  min-height: clamp(220px, 38vh, 420px);
+  padding: 2rem;
+}
+
+/* readable line length for the text block */
+.static-item .static-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 32rem;
+}
+
+/* kill any hover/transform inherited from cards */
+.phd-grid--static .phd-item { transform: none !important; }
+.phd-grid--static .phd-item:hover { transform: none !important; }
+
 /* ==========================================================================
    PhD page: grid, cards, image, poem, chart, footer/signature
    ========================================================================== */
@@ -187,6 +242,17 @@ body {
   min-height: 100vh;            /* full-screen height */
   padding: 4rem 6vw;            /* page-aligned inner padding */
   position: relative;           /* anchor footer/signature */
+}
+
+/* Only the section containing an expanded grid sits above neighbors */
+.full-bleed.section-on-top {
+  position: relative;
+  z-index: 10;
+}
+
+/* Expanded cards paint a solid background so nothing shows through */
+.phd-grid.expanded-mode .phd-item.expanded {
+  background: #fff; /* override any transparency */
 }
 
 /* Thick black bars above & below each 3-column section */
@@ -286,10 +352,10 @@ body {
 .phd-grid.expanded-mode .phd-item.expanded .poem {
   display: flex;
   flex-direction: column;
-  align-items: center;          /* horizontal centre */
-  justify-content: center;      /* vertical centre */
+  align-items: center;       /* center horizontally */
+  justify-content: center;   /* center vertically */
   text-align: center;
-  min-height: 100vh;
+  min-height: 100vh;         /* full-screen height to allow vertical centering */
   width: 100%;
 }
 
@@ -361,6 +427,12 @@ body {
   width: 100%;
   height: auto;
   margin: 0;
+}
+
+/* Prevent swipe gestures & text selection inside the slider */
+.slider, .slides {
+  touch-action: none;     /* ignore horizontal swipes */
+  user-select: none;      /* avoid accidental text/image selection */
 }
 
 /* Nav arrows — plain text < and > */
