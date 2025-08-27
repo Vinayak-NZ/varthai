@@ -172,7 +172,7 @@ body {
   padding: 2rem;
   cursor: pointer;
   overflow: hidden;
-  max-height: 777px;            /* teaser height */
+  max-height: 700px;            /* teaser height */
   border-radius: 0;
   transition: max-height .35s ease, transform .2s ease, opacity .2s ease;
 }
@@ -187,6 +187,14 @@ body {
   min-height: 100vh;            /* full-screen height */
   padding: 4rem 6vw;            /* page-aligned inner padding */
   position: relative;           /* anchor footer/signature */
+}
+
+/* Thick black bars above & below each 3-column section */
+.phd-band {
+  border-top: 10px solid #000;
+  border-bottom: 10px solid #000;
+  /* vertical breathing room between sections */
+  margin-block: 0;
 }
 
 /* ----------------------------- Image block ------------------------------ */
@@ -230,7 +238,7 @@ body {
   line-height: 1.6;
 }
 
-/* Collapsed: perfectly centred + scaled first word */
+/* Collapsed: centre the first word and frame it with a pattern */
 .phd-grid:not(.expanded-mode) .poem {
   display: flex;
   align-items: center;
@@ -238,19 +246,43 @@ body {
   height: 100%;
   text-align: center;
 }
+
 .poem-first {
+  position: relative;                 /* for ::before/::after */
   display: block;
   font-weight: bold;
   color: var(--color-red-bright, #cc0000);
   font-size: clamp(2rem, 10vh, 6rem);
-  line-height: 1;
+  line-height: 1.2;                   /* a touch more room for the pattern */
 }
+
+/* Top pattern */
+.phd-grid:not(.expanded-mode) .poem-first::before {
+  content: "⸻ 𓂃𓂂𓏲𓏲𓂂𓂃 ⸻";
+  display: block;
+  font-size: clamp(.85rem, 2.4vw, 1rem);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  color: inherit;                     /* same red as the word */
+}
+
+/* Bottom pattern */
+.phd-grid:not(.expanded-mode) .poem-first::after {
+  content: "⸻ 𓂃𓂂𓏲𓏲𓂂𓂃 ⸻";
+  display: block;
+  font-size: clamp(.85rem, 2.4vw, 1rem);
+  line-height: 1.2;
+  margin-top: 0.5rem;
+  color: inherit;
+}
+
+/* Hide the rest of the poem when collapsed */
 .poem-rest {
   display: none;
   color: var(--color-red-soft, #aa0000);
 }
 
-/* Expanded: centre poem content within the expanded card */
+/* Expanded: centre full poem and use calmer sizes/colour */
 .phd-grid.expanded-mode .phd-item.expanded .poem {
   display: flex;
   flex-direction: column;
@@ -260,6 +292,7 @@ body {
   min-height: 100vh;
   width: 100%;
 }
+
 .phd-grid.expanded-mode .phd-item.expanded .poem-first {
   display: block;
   margin-bottom: .5rem;
@@ -267,6 +300,7 @@ body {
   font-size: clamp(2rem, 4vh, 3rem);
   color: var(--color-red-soft, #aa0000);
 }
+
 .phd-grid.expanded-mode .phd-item.expanded .poem-rest {
   display: block;
   font-size: 1.2rem;
@@ -474,6 +508,49 @@ body {
   filter: brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,.35)); /* white */
 }
 
+/* -------------------------
+   FOOTER LINKS & SIGNATURE
+   ------------------------- */
+
+/* Hidden by default */
+.phd-footer,
+.phd-signature {
+  display: none;
+}
+
+/* Expanded cards anchor positioned children */
+.phd-grid.expanded-mode .phd-item.expanded {
+  position: relative;
+}
+
+/* ===== Image card (artwork): footer & signature over the image ===== */
+.phd-grid.expanded-mode .phd-item.expanded .phd-image-crop {
+  position: relative; /* anchor to image */
+}
+
+.phd-grid.expanded-mode .phd-item.expanded .phd-image-crop .phd-footer {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.phd-grid.expanded-mode .phd-item.expanded .phd-image-crop .phd-signature {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  display: block;
+  width: clamp(2rem, 5vw, 4rem); /* smaller signature */
+  height: auto;
+  opacity: 0.9;
+  pointer-events: none;
+  filter: brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,.35)); /* white */
+}
+
 /* ===== Poem card: footer sits directly under the poem, centered ===== */
 .phd-grid.expanded-mode .phd-item.expanded.phd-item--poem .poem {
   display: block;           /* normal flow */
@@ -582,4 +659,6 @@ body {
     bottom: 0.5rem;
     width: clamp(1.5rem, 14vw, 3rem);
   }
+  /* 8) Section bars: tighter spacing on small screens */
+  .phd-band { margin-block: 1.25rem; }
 }

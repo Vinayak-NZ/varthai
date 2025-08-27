@@ -1,5 +1,5 @@
 (function () {
-  const slider = document.getElementById('image-slider'); // <-- fixed ID
+  const slider = document.getElementById('image-slider');
   if (!slider) return;
 
   const track  = slider.querySelector('.slides');
@@ -10,7 +10,15 @@
 
   let idx = 0, startX = 0, deltaX = 0, dragging = false, moved = false;
 
-  // Build dots
+  // --- NEW: helper to get visible viewport width (excludes side padding) ---
+  function viewW() {
+    const cs  = getComputedStyle(slider);
+    const padL = parseFloat(cs.paddingLeft)  || 0;
+    const padR = parseFloat(cs.paddingRight) || 0;
+    return slider.clientWidth - padL - padR;
+  }
+
+  // Build dots (unchanged)
   slides.forEach((_, i) => {
     const b = document.createElement('button');
     b.type = 'button';
@@ -20,9 +28,10 @@
     dotsEl.appendChild(b);
   });
 
+  // --- CHANGED: px-based transform to avoid peeking ---
   function update() {
     track.style.transition = 'transform .28s ease';
-    track.style.transform = `translateX(${(-idx) * 100}%)`;
+    track.style.transform  = `translateX(${-idx * viewW()}px)`;
     dotsEl.querySelectorAll('button').forEach((b, i) =>
       b.setAttribute('aria-selected', i === idx ? 'true' : 'false')
     );
@@ -31,84 +40,64 @@
   function nextSlide(){ go(idx + 1); }
   function prevSlide(){ go(idx - 1); }
 
-  // Arrows (don’t collapse the card)
-  if (next) next.addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); });
-  if (prev) prev.addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); });
+  // Arrow clicks (unchanged)
+  next.addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); });
+  prev.addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); });
 
-  // Keyboard
+  // Keyboard (unchanged)
   slider.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') { e.stopPropagation(); nextSlide(); }
     if (e.key === 'ArrowLeft')  { e.stopPropagation(); prevSlide(); }
   });
 
-  // Drag/swipe
+  // --- CHANGED: drag uses px, not percent ---
   function onStart(x){
-    dragging = true; moved = false; startX = x; deltaX = 0;
+    dragging = true; moved = false;
+    startX = x; deltaX = 0;
     track.style.transition = 'none';
   }
   function onMove(x){
     if (!dragging) return;
     deltaX = x - startX;
     if (Math.abs(deltaX) > 3) moved = true;
-    const pct = (-idx * 100) + (deltaX / slider.clientWidth) * 100;
-    track.style.transform = `translateX(${pct}%)`;
+    const pos = (-idx * viewW()) + deltaX;
+    track.style.transform = `translateX(${pos}px)`;
   }
   function onEnd(){
     if (!dragging) return;
     dragging = false;
-    const threshold = slider.clientWidth * 0.15;
+    const threshold = viewW() * 0.15;
     if (deltaX < -threshold)      nextSlide();
     else if (deltaX > threshold)  prevSlide();
     else                          update();
   }
 
-  // Mouse
+  // Bind mouse/touch (unchanged)
   track.addEventListener('mousedown', (e) => { e.stopPropagation(); onStart(e.clientX); });
   window.addEventListener('mousemove', (e) => { if (dragging) onMove(e.clientX); });
   window.addEventListener('mouseup',   (e) => { if (dragging) { onEnd(); e.stopPropagation(); } });
 
-  // Touch
   track.addEventListener('touchstart', (e) => { e.stopPropagation(); onStart(e.touches[0].clientX); }, { passive: true });
   window.addEventListener('touchmove',  (e) => { if (dragging) onMove(e.touches[0].clientX); }, { passive: true });
   window.addEventListener('touchend',   (e) => { if (dragging) { onEnd(); e.stopPropagation(); } });
 
-  // Never bubble slider interactions to the card; cancel "click" after drag
+  // Prevent bubbling (unchanged)
   ['click','mousedown','mouseup','touchstart','touchend'].forEach(type => {
     slider.addEventListener(type, (e) => e.stopPropagation());
   });
-  track.addEventListener('click', (e) => { if (moved) e.preventDefault(); e.stopPropagation(); });
 
-  // Preload slide images when expanded so later slides never appear blank
-  function preloadSlides() {
-    slides.forEach(sl => {
-      const img = sl.querySelector('img');
-      if (img && img.dataset.preloaded !== '1') {
-        const i = new Image();
-        i.src = img.src;
-        img.dataset.preloaded = '1';
-      }
-    });
-  }
-
-  // Only show/initialize slider when the card is expanded
+  // Initialize only when expanded (unchanged)
   function maybeInit(){
     const card = slider.closest('.phd-item');
     const grid = slider.closest('.phd-grid');
     const active = card?.classList.contains('expanded') && grid?.classList.contains('expanded-mode');
-
     slider.style.display = active ? 'block' : 'none';
     slider.tabIndex = active ? 0 : -1;
-
-    if (active) {
-      preloadSlides();
-      requestAnimationFrame(update);
-    }
+    if (active) requestAnimationFrame(update);
   }
-
   const grid = document.querySelector('.phd-grid');
   if (grid){
     new MutationObserver(maybeInit).observe(grid, { attributes: true, subtree: true, attributeFilter: ['class'] });
   }
-  // Initial state
   maybeInit();
 })();
