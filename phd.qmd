@@ -22,9 +22,7 @@ format:
 <div class="full-bleed bg-black text-white">
   <div class="w-100" style="height:2rem;"></div>
 </div>
-
 ```
-
 
 ```{=html}
 
@@ -58,7 +56,6 @@ format:
     </section>
   </div>
 </div>
-
 ```
 
 ```{=html}
@@ -182,3 +179,9 @@ format:
 </div>
 ```
 
+```{=html}
+
+<div class="full-bleed bg-black text-white">
+  <div class="w-100" style="height:10rem;"></div>
+</div>
+```
