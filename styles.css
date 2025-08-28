@@ -48,6 +48,10 @@ main.content h2:first-of-type {
   margin-bottom: 0;
 }
 
+.font-rock {
+  font-family: 'Rock Salt', cursive;
+}
+
 /* ==========================================================================
    Title - homepage
    ========================================================================== */
@@ -273,6 +277,12 @@ main.content h2:first-of-type {
   max-height: 700px;            /* teaser height */
   border-radius: 0;
   transition: max-height .35s ease, transform .2s ease, opacity .2s ease;
+}
+
+/* Make static text columns never clip */
+.phd-item.static-item {
+  overflow: visible !important;
+  max-height: none !important;
 }
 
 /* Expanded mode (canonical rule) */

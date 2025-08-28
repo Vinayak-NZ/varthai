@@ -6,6 +6,9 @@ format:
     theme: cosmo
     css:
       - styles.css
+    include-in-header:
+      - text: |
+          <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     include-after-body:
       - text: |
           <script defer src="assets/js/scripts.js"></script>
@@ -15,7 +18,7 @@ format:
 <div class="container">
   <div class="full-bleed bg-black text-white text-center">
     <div class="w-100" style="height:2rem;">
-      <h2>Data stories</h2>
+      <h2>DATA STORIES</h2>
     </div>
   </div>
 </div>
@@ -26,7 +29,7 @@ format:
     <div class="phd-grid phd-grid--static no-expand" role="list">
       <section class="phd-item static-item" role="listitem">
         <div class="static-text">
-          <h3>Art</h3>
+          <h4 class="font-rock">ART</h4>
           <br>
           <br>
             <p class = "nav-page">On the left handside (or as the first row when viewed on a small screen), you will find artistic and abstract representations that reflect the inferences or interpretations made from the data.</p>
@@ -39,7 +42,7 @@ format:
   
       <section class="phd-item static-item" role="listitem">
         <div class="static-text">
-          <h3>Poetry</h3>
+          <h4><span style="font-family: 'Brush Script MT', cursive;">POETRY</span></h4>
           <br>
           <br>
             <p class = "nav-page">In the middle (or on the second row when viewed on a small screen), you will find a poetic interpretation that reflects the inferences or patterns emerging from the data.</p> 
@@ -52,7 +55,8 @@ format:
   
       <section class="phd-item static-item" role="listitem">
         <div class="static-text">
-          <h3>Data visualisation</h3>
+          <h4><span style="font-family: 'Courier New', Courier, monospace;">
+      DATA VISUALISATION</span></h4>
           <br>
           <br>
             <p class = "nav-page">On the right handside (or as the last row when viewed on a small screen), you will find visualisations that represent patterns in the data.</p>
