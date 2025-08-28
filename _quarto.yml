@@ -12,6 +12,8 @@ website:
     left:
       - text: "Home"
         href: index.qmd
+      - text: "Navigation"
+        href: navigation.qmd
       - text: "PhD"
         href: phd.qmd
 

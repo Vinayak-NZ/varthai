@@ -27,6 +27,27 @@ body {
   overflow: hidden; white-space: nowrap;
 }
 
+/* Remove top margin after navbar */
+main.content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+main.content h1:first-of-type,
+main.content h2:first-of-type {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Remove vertical gaps between stacked full-bleed sections */
+.full-bleed h1,
+.full-bleed h2,
+.full-bleed h3,
+.full-bleed p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 /* ==========================================================================
    Title - homepage
    ========================================================================== */
@@ -172,6 +193,28 @@ body {
 .social-logos img {
   width: 100%;
   height: auto;
+}
+/* Style only logos inside Jump section */
+.jump-logos img {
+  width: 48px;
+  height: auto;
+}
+.jump-logos a {
+  display: flex;
+  flex-direction: column;   /* stack image + text */
+  align-items: center;
+  text-decoration: none;
+  color: inherit;           /* inherit text color */
+}
+.jump-logos a span {
+  margin-top: .25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.nav-page p {
+  margin-bottom: 4rem;   /* space after each paragraph */
+  line-height: 2.6;      /* more readable line spacing */
 }
 
 /* ================================

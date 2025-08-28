@@ -26,40 +26,6 @@ format:
 
 ```{=html}
 
-<div class="full-bleed phd-band bg-black">
-  <div class="phd-grid phd-grid--static no-expand" role="list">
-    <section class="phd-item static-item" role="listitem">
-      <div class="static-text">
-        <h2>Art</h2>
-          <p>In this section (or on the first row when viewed on a small screen), you will find artistic and abstract representations that reflect the inferences or interpretations made from the data.</p> 
-          <p>If you click on the artwork, it will expand to reveal the full piece, and you will find a hyperlink labelled "Behind the curtain" that leads to a Wikimedia Commons page describing the meaning behind the piece.</p>
-          <p>To return to the other representations of the analyses, please click on the expanded artwork.</p>
-      </div>
-    </section>
-
-    <section class="phd-item static-item" role="listitem">
-      <div class="static-text">
-        <h2>Poetry</h2>
-          <p>In this section (or on the second row when viewed on a small screen), you will find a poetic interpretation that reflects the inferences or patterns emerging from the data.</p> 
-          <p>If you click on the word, it will expand to reveal the poem, and you will find a hyperlink labelled "More words about the matter" that leads to the publication of the research or a traditional reporting of the analyses.</p>
-          <p>To return to the other representations of the analyses, please click on the poem.</p>
-      </div>
-    </section>
-
-    <section class="phd-item static-item" role="listitem">
-      <div class="static-text">
-        <h2>Data visualisation</h2>
-          <p>In this section (or on the third row when viewed on a small screen), you will find visualisations that represent patterns in the data.</p>
-          <p>If you click on the graph or chart, it will expand to reveal the full chart or sequence of charts. You will also find a hyperlink labelled "Open seasame" that leads to the Open Science Framework (OSF) repository containing metadata and code from the analyses.</p>
-          <p>To return to the other representations of the analyses, please click the white space outside the chart.</p>
-      </div>
-    </section>
-  </div>
-</div>
-```
-
-```{=html}
-
 <div class="full-bleed phd-band">
   <div class="phd-grid" role="list">
 

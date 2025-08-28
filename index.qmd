@@ -56,29 +56,29 @@ format:
         <!-- Transcript -->
         <div class="col-lg-5">
           <div id="transcript" class="transcript mt-4">
-            <p data-start="0.00" data-end="8.00">
+            <p data-start="0.00" data-end="12.00">
               Hiya,<br>
               Welcome to my homepage.<br>
               My name is Vinayak.
             </p>
 
-            <p data-start="8.00" data-end="33.00">
-              I am a methodologist, with a background in health behaviour change and an interest in making social science (particularly psychology and health psychology) more open.<br>
+            <p data-start="12.00" data-end="35.00">
+              I am a methodologist, with a background in official statistics, health behaviour change and an interest in making social science (particularly psychology and health psychology) more open.<br>
               I’ve created this website to share my work and creative pursuits, and hopefully make them both accessible and engaging.
             </p>
 
-            <p data-start="33.00" data-end="54.00">
+            <p data-start="35.00" data-end="50.00">
               I’m calling this project “Varthai”, which is a word from the Tamil language.<br>
               It translates to “word” in English.<br>
               The name comes from the idea that the same object can often be expressed using different words.
             </p>
 
-            <p data-start="54.00" data-end="76.00">
+            <p data-start="50.00" data-end="64.00">
               So, in that vein, I’d like to use different words (in the metaphorical sense) to express my work.<br>
               Through data visualisations, drawings and poetry, I’d like to have a word with you.
             </p>
 
-            <p data-start="76.00" data-end="90.00">
+            <p data-start="64.00" data-end="90.00">
               Or to put it in Tamil:<br>
               <strong>தரவு காட்சிப்படுத்தல்கள், ஓவியங்கள், கவிதைகள் மூலமா, உங்களோட ஒரு வார்த்தை பேச ஆசை.</strong>
             </p>
