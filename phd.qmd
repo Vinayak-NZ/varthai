@@ -6,7 +6,6 @@ format:
     theme: cosmo
     css:
       - styles.css
-    body-classes: page-phd
     include-in-header:
       - text: |
           <link href="https://fonts.googleapis.com/css2?family=Kenac&display=swap" rel="stylesheet">
@@ -17,137 +16,135 @@ format:
           <script defer src="assets/js/image-slider.js"></script>
 ---
 
-```{=html}
-
-<div class="full-bleed bg-black text-white">
-  <div class="w-100" style="height:2rem;"></div>
-</div>
-```
 
 ```{=html}
 
-<div class="full-bleed phd-band">
-  <div class="phd-grid" role="list">
-
-    <!-- Column 1: Image -->
-    <section class="phd-item light-bg" role="listitem" aria-labelledby="phd-seg1-title">
-      <h3 id="phd-seg1-title" class="visually-hidden">Research Image</h3>
-      <figure class="phd-image-crop">
-        <img 
-          src="assets/img/phd/study_01/conch_shell.png" 
-          alt="High-level visualisation or illustration of research concept" 
-          class="phd-image"
-          loading="lazy"
-        >
-        <div class="phd-footer">
-          <a class="phd-link" href="https://commons.wikimedia.org/wiki/File:The_call.png" target="_blank" rel="noopener">Behind the curtain</a>
-        </div>
-        <img class="phd-signature" src="assets/img/core/signature_vinayak.png" alt="Signature of Vinayak">
-      </figure>
-    </section>
-
-    <!-- Column 2: Poem -->
-    <section class="phd-item phd-item--poem light-bg" role="listitem" aria-labelledby="phd-seg2-title">
-      <h3 id="phd-seg2-title" class="visually-hidden">Poem</h3>
-        <div class="poem">
-          <span class="poem-first">Nocked</span>
-          <span class="poem-rest">
-            for a windy under twenty,<br>
-            Drawing the string with arms aplenty,<br>
-            Heed the voices prior,<br>
-            Sense before anchor,<br>
-            Released&nbsp;— a force, a servant, a tribe’s mentee.
-          </span>
-        </div>
-      <div class="phd-footer">
-        <a class="phd-link" href="https://www.sciencedirect.com/science/article/pii/S0033350625002938" target="_blank" rel="noopener">More words about the matter</a>
-      </div>
-    </section>
-
-    <!-- Column 3: Chart -->
-    <section class="phd-item phd-item--chart light-bg" role="listitem" aria-labelledby="phd-seg3-title">
-      <h3 id="phd-seg3-title" class="visually-hidden">Data Visualisation</h3>
-    
-      <div class="chart-card">
-        <!-- Collapsed: show the first graph -->
-        <img class="chart-thumb"
-             src="assets/img/phd/study_01/figure_01.jpeg"
-             alt="Key facilitators per case">
-    
-        <!-- Expanded: swipeable slider -->
-        <div id="image-slider" class="slider" aria-label="Study 1 chart gallery">
-          <div class="slides">
-            <figure class="slide is-active">
-              <img src="assets/img/phd/study_01/figure_01.jpeg" alt="facilitators cc pub">
-              <figcaption class="visually-hidden">facilitators cc pub</figcaption>
-            </figure>
-            
-            <figure class="slide">
-              <img src="assets/img/phd/study_01/figure_02.jpeg" alt="challenges cc pub">
-              <figcaption class="visually-hidden">facilitators cc pub</figcaption>
-            </figure>
-            
-            <figure class="slide">
-              <img src="assets/img/phd/study_01/figure_03.png" alt="facilitators case a">
-              <figcaption class="visually-hidden">facilitators case a</figcaption>
-            </figure>
-    
-            <figure class="slide">
-              <img src="assets/img/phd/study_01/figure_04.png" alt="facilitators case b">
-              <figcaption class="visually-hidden">facilitators case b</figcaption>
-            </figure>
-    
-            <figure class="slide">
-              <img src="assets/img/phd/study_01/figure_05.png" alt="facilitators case c">
-              <figcaption class="visually-hidden">facilitators case c</figcaption>
-            </figure>
-
-            <figure class="slide">
-              <img src="assets/img/phd/study_01/figure_06.png" alt="facilitators cc">
-              <figcaption class="visually-hidden">facilitators cc</figcaption>
-            </figure>
-            
-            <figure class="slide">
-              <img src="assets/img/phd/study_01/figure_07.png" alt="challenges case a">
-              <figcaption class="visually-hidden">challenges case a</figcaption>
-            </figure>
-            
-            <figure class="slide">
-              <img src="assets/img/phd/study_01/figure_08.png" alt="challenges case b">
-              <figcaption class="visually-hidden">challenges case b</figcaption>
-            </figure>
-                        
-            <figure class="slide">
-              <img src="assets/img/phd/study_01/figure_09.png" alt="challenges case c">
-              <figcaption class="visually-hidden">challenges case c</figcaption>
-            </figure>
-            
-            <figure class="slide">
-              <img src="assets/img/phd/study_01/figure_10.png" alt="challenges cc">
-              <figcaption class="visually-hidden">challenges cc</figcaption>
-            </figure>
-            
+<div class="container">
+  <div class="full-bleed phd-band">
+    <div class="phd-band-title">
+      Co-creating digital health interventions
+    </div>
+    <div class="phd-grid" role="list">
+  
+      <!-- Column 1: Image -->
+      <section class="phd-item light-bg" role="listitem" aria-labelledby="phd-seg1-title">
+        <h3 id="phd-seg1-title" class="visually-hidden">Research Image</h3>
+        <figure class="phd-image-crop">
+          <img 
+            src="assets/img/phd/study_01/conch_shell.png" 
+            alt="High-level visualisation or illustration of research concept" 
+            class="phd-image"
+            loading="lazy"
+          >
+          <div class="phd-footer">
+            <a class="phd-link" href="https://commons.wikimedia.org/wiki/File:The_call.png" target="_blank" rel="noopener">Behind the curtain</a>
           </div>
-    
-          <button class="nav prev" aria-label="Previous">‹</button>
-          <button class="nav next" aria-label="Next">›</button>
-          <div class="dots" role="tablist" aria-label="Slide navigation"></div>
-        </div>
-    
-        <!-- Links directly under the slider (right‑aligned by CSS) -->
+          <img class="phd-signature" src="assets/img/core/signature_vinayak.png" alt="Signature of Vinayak">
+        </figure>
+      </section>
+  
+      <!-- Column 2: Poem -->
+      <section class="phd-item phd-item--poem light-bg" role="listitem" aria-labelledby="phd-seg2-title">
+        <h3 id="phd-seg2-title" class="visually-hidden">Poem</h3>
+          <div class="poem">
+            <span class="poem-first">Nocked</span>
+            <span class="poem-rest">
+              for a windy under twenty,<br>
+              Drawing the string with arms aplenty,<br>
+              Heed the voices prior,<br>
+              Sense before anchor,<br>
+              Released&nbsp;— a force, a servant, a tribe’s mentee.
+            </span>
+          </div>
         <div class="phd-footer">
-          <a class="phd-link" href="https://osf.io/ed639/" target="_blank" rel="noopener">Open seasame</a>
+          <a class="phd-link" href="https://www.sciencedirect.com/science/article/pii/S0033350625002938" target="_blank" rel="noopener">More words about the matter</a>
         </div>
-      </div>
-    </section>
-
+      </section>
+  
+      <!-- Column 3: Chart -->
+      <section class="phd-item phd-item--chart light-bg" role="listitem" aria-labelledby="phd-seg3-title">
+        <h3 id="phd-seg3-title" class="visually-hidden">Data Visualisation</h3>
+      
+        <div class="chart-card">
+          <!-- Collapsed: show the first graph -->
+          <img class="chart-thumb"
+               src="assets/img/phd/study_01/figure_01.jpeg"
+               alt="Key facilitators per case">
+      
+          <!-- Expanded: swipeable slider -->
+          <div id="image-slider" class="slider" aria-label="Study 1 chart gallery">
+            <div class="slides">
+              <figure class="slide is-active">
+                <img src="assets/img/phd/study_01/figure_01.jpeg" alt="facilitators cc pub">
+                <figcaption class="visually-hidden">facilitators cc pub</figcaption>
+              </figure>
+              
+              <figure class="slide">
+                <img src="assets/img/phd/study_01/figure_02.jpeg" alt="challenges cc pub">
+                <figcaption class="visually-hidden">facilitators cc pub</figcaption>
+              </figure>
+              
+              <figure class="slide">
+                <img src="assets/img/phd/study_01/figure_03.png" alt="facilitators case a">
+                <figcaption class="visually-hidden">facilitators case a</figcaption>
+              </figure>
+      
+              <figure class="slide">
+                <img src="assets/img/phd/study_01/figure_04.png" alt="facilitators case b">
+                <figcaption class="visually-hidden">facilitators case b</figcaption>
+              </figure>
+      
+              <figure class="slide">
+                <img src="assets/img/phd/study_01/figure_05.png" alt="facilitators case c">
+                <figcaption class="visually-hidden">facilitators case c</figcaption>
+              </figure>
+  
+              <figure class="slide">
+                <img src="assets/img/phd/study_01/figure_06.png" alt="facilitators cc">
+                <figcaption class="visually-hidden">facilitators cc</figcaption>
+              </figure>
+              
+              <figure class="slide">
+                <img src="assets/img/phd/study_01/figure_07.png" alt="challenges case a">
+                <figcaption class="visually-hidden">challenges case a</figcaption>
+              </figure>
+              
+              <figure class="slide">
+                <img src="assets/img/phd/study_01/figure_08.png" alt="challenges case b">
+                <figcaption class="visually-hidden">challenges case b</figcaption>
+              </figure>
+                          
+              <figure class="slide">
+                <img src="assets/img/phd/study_01/figure_09.png" alt="challenges case c">
+                <figcaption class="visually-hidden">challenges case c</figcaption>
+              </figure>
+              
+              <figure class="slide">
+                <img src="assets/img/phd/study_01/figure_10.png" alt="challenges cc">
+                <figcaption class="visually-hidden">challenges cc</figcaption>
+              </figure>
+              
+            </div>
+      
+            <button class="nav prev" aria-label="Previous">‹</button>
+            <button class="nav next" aria-label="Next">›</button>
+            <div class="dots" role="tablist" aria-label="Slide navigation"></div>
+          </div>
+      
+          <!-- Links directly under the slider (right‑aligned by CSS) -->
+          <div class="phd-footer">
+            <a class="phd-link" href="https://osf.io/ed639/" target="_blank" rel="noopener">Open seasame</a>
+          </div>
+        </div>
+      </section>
+  
+    </div>
+    
+    <div class="phd-band-title bottom">
+      Co-creating digital health interventions
+    </div>
+  
   </div>
 </div>
 ```
 
-```{=html}
-
-<div class="full-bleed bg-black text-white">
-  <div class="w-100" style="height:10rem;"></div>
-</div>
-```

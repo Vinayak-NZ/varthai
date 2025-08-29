@@ -24,9 +24,9 @@ format:
         <span id="typed-output" aria-live="polite"></span>
       </h1>
     </div>
-    <div class="scroll-down">
-      <span class="arrow">V</span>
-    </div>
+      <div class="scroll-down">
+        <span class="arrow">V</span>
+      </div>
   </div>
 </section>
 
