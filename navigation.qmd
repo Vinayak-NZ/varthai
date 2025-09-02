@@ -17,12 +17,18 @@ format:
 ```{=html}
 <div class="container">
   <div class="full-bleed bg-black text-white text-center">
-    <div class="w-100" style="height:2rem;">
+    <div class="w-100" style="padding: 2rem 0;">
       <h2>DATA STORIES</h2>
+
+      <div class="video-wrapper">
+      <iframe src="https://player.vimeo.com/video/1115309816?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Introduction to Data Stories">
+      </iframe>
+      </div>
     </div>
   </div>
 </div>
 ```
+
 ```{=html}
 <div class="container">
   <div class="full-bleed bg-black text-white">
@@ -71,6 +77,7 @@ format:
 </div>
   
 ```
+
 ```{=html}
 
 <div class="full-bleed bg-white text-center">
