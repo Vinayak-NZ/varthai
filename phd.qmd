@@ -74,12 +74,12 @@ format:
           <div id="image-slider" class="slider" aria-label="Study 1 chart gallery">
             <div class="slides">
               <figure class="slide is-active">
-                <img src="assets/img/phd/study_01/figure_01.jpeg" alt="facilitators cc pub">
+                <img src="assets/img/phd/study_01/figure_01.png" alt="facilitators cc pub">
                 <figcaption class="visually-hidden">facilitators cc pub</figcaption>
               </figure>
               
               <figure class="slide">
-                <img src="assets/img/phd/study_01/figure_02.jpeg" alt="challenges cc pub">
+                <img src="assets/img/phd/study_01/figure_02.png" alt="challenges cc pub">
                 <figcaption class="visually-hidden">facilitators cc pub</figcaption>
               </figure>
               
