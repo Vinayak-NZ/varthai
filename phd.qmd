@@ -16,7 +16,6 @@ format:
           <script defer src="assets/js/image-slider.js"></script>
 ---
 
-
 ```{=html}
 
 <div class="container">
@@ -147,4 +146,3 @@ format:
   </div>
 </div>
 ```
-
