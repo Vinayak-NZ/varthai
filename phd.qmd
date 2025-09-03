@@ -67,7 +67,7 @@ format:
         <div class="chart-card">
           <!-- Collapsed: show the first graph -->
           <img class="chart-thumb"
-               src="assets/img/phd/study_01/figure_01.jpeg"
+               src="assets/img/phd/study_01/figure_01.png"
                alt="Key facilitators per case">
       
           <!-- Expanded: swipeable slider -->
