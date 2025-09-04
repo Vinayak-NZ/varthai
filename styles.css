@@ -44,7 +44,7 @@ main.content h2:first-of-type {
 .full-bleed h2,
 .full-bleed h3,
 .full-bleed p {
-  margin-top: 0;
+  margin-top: 5rem;
   margin-bottom: 0;
 }
 
@@ -242,10 +242,10 @@ main.content h2:first-of-type {
 
 .slides-wrapper {
   position: relative;
-  padding-bottom: 42%; /* 16:9 aspect ratio */
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
   overflow: hidden;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -255,6 +255,13 @@ main.content h2:first-of-type {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* Make iframe taller on phones in portrait */
+@media (max-width: 640px) and (orientation: portrait) {
+  .slides-wrapper {
+    padding-bottom: 75%; /* 4:3 ratio — taller */
+  }
 }
 
 /* ================================

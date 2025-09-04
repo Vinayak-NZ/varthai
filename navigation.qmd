@@ -12,6 +12,7 @@ format:
     include-after-body:
       - text: |
           <script defer src="assets/js/scripts.js"></script>
+          <script defer src="assets/js/init-scroll-nav.js"></script>
 ---
 
 ```{=html}
@@ -30,24 +31,27 @@ format:
 ```
 
 ```{=html}
-<div class="container">
-  <div class="full-bleed bg-black text-white">
-    <div class="slides-wrapper">
-      <iframe
-        src="slides/navigation_slides.html"
-        loading="lazy"
-        allow="fullscreen"
-      ></iframe>
+
+<section id="nav-slide">
+    <div class="container">
+      <div class="full-bleed bg-black text-white">
+        <div class="slides-wrapper">
+          <iframe
+            src="slides/navigation_slides.html"
+            loading="lazy"
+            allow="fullscreen"
+          ></iframe>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-  
+</section>
 ```
+
 
 ```{=html}
 
 <div class="full-bleed bg-white text-center">
-  <p class="lead mb-3"><strong>Jump to some data stories</strong></p>
+  <p class="lead mb-3"><h4>Jump to some data stories</h4></p>
     <div class="social-logos jump-logos">
       <a href="/phd.html" aria-label="Go to PhD page">
         <img src="assets/img/icons/phd_hat.svg" alt="PhD">
