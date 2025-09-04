@@ -10,5 +10,8 @@
   },
   "navigation.qmd": {
     "navigation.html": "91040745"
+  },
+  "slides/navigation_slides.qmd": {
+    "navigation_slides.html": "45ab53e7"
   }
 }

@@ -1,0 +1,202 @@
+---
+title: "Data Stories"
+subtitle: "Navigate data stories"
+format:
+  revealjs:
+    theme: black
+    controls: true
+    controlsLayout: edges
+    controlsBackArrows: visible
+    controlsTutorial: true
+    preview-links: auto
+    progress: true
+    slideNumber: true
+    hash: true
+    navigationMode: default
+---
+
+# Art
+
+## Art {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Arrangement on a small screen.
+
+<br/>
+
+<br/>
+
+::: r-hstack
+::: {data-id="box1" auto-animate-delay="0" style="background:#46e7fd; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
+Art
+:::
+::: {data-id="box2" auto-animate-delay="0.1" style="background:#4739a2; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold;"}
+:::
+::: {data-id="box3" auto-animate-delay="0.2" style="background:#e18b22; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; text-align:center; color:#000; font-weight:bold; font-size:1.5rem;"}
+:::
+:::
+
+## Art {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Arrangement on a large screen.
+
+<br/>
+
+<br/>
+
+::: r-vstack
+::: {data-id="box1" style="background:#46e7fd; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
+Art
+:::
+::: {data-id="box2" style="background:#4739a2; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold;"}
+:::
+::: {data-id="box3" style="background:#e18b22; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
+:::
+:::
+
+## Concept
+
+::: {.fragment .fade-in-then-semi-out}
+Artistic and abstract interpretations made from the data
+:::
+
+<br/>
+
+::: {.fragment .fade-in-then-semi-out}
+Click on the art piece to expand
+:::
+
+<br/>
+
+::: {.fragment .fade-in-then-semi-out}
+Step [behind the curtain](https://commons.wikimedia.org/wiki/File:The_call.png){preview-link="true"} (i.e. click the link) to uncover the meaning of the piece on Wikimedia Commons
+:::
+
+<br/>
+
+::: {.fragment .fade-in-then-semi-out}
+Click the artwork again to go back to all three sections
+:::
+
+# Poetry
+
+## Poetry {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Arrangement on a small screen.
+
+<br/>
+
+<br/>
+
+::: r-hstack
+::: {data-id="box1" auto-animate-delay="0" style="background:#46e7fd; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
+:::
+::: {data-id="box2" auto-animate-delay="0.1" style="background:#4739a2; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold;"}
+Poetry
+:::
+::: {data-id="box3" auto-animate-delay="0.2" style="background:#e18b22; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; text-align:center; color:#000; font-weight:bold; font-size:1.5rem;"}
+:::
+:::
+
+## Poetry {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Arrangement on a large screen.
+
+<br/>
+
+<br/>
+
+::: r-vstack
+::: {data-id="box1" style="background:#46e7fd; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
+:::
+::: {data-id="box2" style="background:#4739a2; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold;"}
+Poetry
+:::
+::: {data-id="box3" style="background:#e18b22; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
+:::
+:::
+
+## Concept
+
+::: {.fragment .fade-in-then-semi-out}
+A poetic lens on the data, highlighting one or more key messages in verse.
+:::
+
+<br/>
+
+::: {.fragment .fade-in-then-semi-out}
+Click on the word to reveal the poem
+:::
+
+<br/>
+
+::: {.fragment .fade-in-then-semi-out}
+Get [more words on the matter](https://scholar.google.com/citations?user=HrfPThQAAAAJ&hl=en&oi=ao){preview-link="true"} (i.e. click the link) and read the publication or manuscript
+:::
+
+<br/>
+
+::: {.fragment .fade-in-then-semi-out}
+Click the poem to go back to all three sections
+:::
+
+# Data Visualisation
+
+## Data Visualisation {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Arrangement on a small screen.
+
+<br/>
+
+<br/>
+
+::: r-hstack
+::: {data-id="box1" auto-animate-delay="0" style="background:#46e7fd; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
+:::
+::: {data-id="box2" auto-animate-delay="0.1" style="background:#4739a2; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold;"}
+:::
+::: {data-id="box3" auto-animate-delay="0.2" style="background:#e18b22; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; text-align:center; color:#000; font-weight:bold; font-size:1.5rem;"}
+Data Visualisation
+:::
+:::
+
+## Data Visualisation {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Arrangement on a large screen.
+
+<br/>
+
+<br/>
+
+::: r-vstack
+::: {data-id="box1" style="background:#46e7fd; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
+:::
+::: {data-id="box2" style="background:#4739a2; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold;"}
+:::
+::: {data-id="box3" style="background:#e18b22; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
+Data Visualisation
+:::
+:::
+
+## Concept
+
+::: {.fragment .fade-in-then-semi-out}
+Charts, graphs or graphics, presenting key insights from data.
+:::
+
+<br/>
+
+::: {.fragment .fade-in-then-semi-out}
+Click on the graphic to zoom in
+:::
+
+<br/>
+
+::: {.fragment .fade-in-then-semi-out}
+Say [open seasame](https://osf.io/rg8s4/){preview-link="true"} (i.e. click the link) to see all metadata and code associated with data and analyses 
+:::
+
+<br/>
+
+::: {.fragment .fade-in-then-semi-out}
+Click the white space outside the graphic to go back to all three sections
+:::
