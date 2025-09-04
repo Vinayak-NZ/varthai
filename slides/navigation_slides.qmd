@@ -25,15 +25,17 @@ Arrangement on a small screen.
 
 <br/>
 
-::: r-hstack
+:::::: r-hstack
 ::: {data-id="box1" auto-animate-delay="0" style="background:#46e7fd; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
 Art
 :::
+
 ::: {data-id="box2" auto-animate-delay="0.1" style="background:#4739a2; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold;"}
 :::
+
 ::: {data-id="box3" auto-animate-delay="0.2" style="background:#e18b22; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; text-align:center; color:#000; font-weight:bold; font-size:1.5rem;"}
 :::
-:::
+::::::
 
 ## Art {auto-animate="true" auto-animate-easing="ease-in-out"}
 
@@ -43,15 +45,17 @@ Arrangement on a large screen.
 
 <br/>
 
-::: r-vstack
+:::::: r-vstack
 ::: {data-id="box1" style="background:#46e7fd; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
 Art
 :::
+
 ::: {data-id="box2" style="background:#4739a2; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold;"}
 :::
+
 ::: {data-id="box3" style="background:#e18b22; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
 :::
-:::
+::::::
 
 ## Concept
 
@@ -87,15 +91,17 @@ Arrangement on a small screen.
 
 <br/>
 
-::: r-hstack
+:::::: r-hstack
 ::: {data-id="box1" auto-animate-delay="0" style="background:#46e7fd; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
 :::
+
 ::: {data-id="box2" auto-animate-delay="0.1" style="background:#4739a2; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold;"}
 Poetry
 :::
+
 ::: {data-id="box3" auto-animate-delay="0.2" style="background:#e18b22; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; text-align:center; color:#000; font-weight:bold; font-size:1.5rem;"}
 :::
-:::
+::::::
 
 ## Poetry {auto-animate="true" auto-animate-easing="ease-in-out"}
 
@@ -105,15 +111,17 @@ Arrangement on a large screen.
 
 <br/>
 
-::: r-vstack
+:::::: r-vstack
 ::: {data-id="box1" style="background:#46e7fd; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
 :::
+
 ::: {data-id="box2" style="background:#4739a2; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold;"}
 Poetry
 :::
+
 ::: {data-id="box3" style="background:#e18b22; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
 :::
-:::
+::::::
 
 ## Concept
 
@@ -149,15 +157,17 @@ Arrangement on a small screen.
 
 <br/>
 
-::: r-hstack
+:::::: r-hstack
 ::: {data-id="box1" auto-animate-delay="0" style="background:#46e7fd; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
 :::
+
 ::: {data-id="box2" auto-animate-delay="0.1" style="background:#4739a2; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold;"}
 :::
+
 ::: {data-id="box3" auto-animate-delay="0.2" style="background:#e18b22; width:200px; height:150px; margin:10px; border-radius:12px; display:flex; align-items:center; justify-content:center; text-align:center; color:#000; font-weight:bold; font-size:1.5rem;"}
 Data Visualisation
 :::
-:::
+::::::
 
 ## Data Visualisation {auto-animate="true" auto-animate-easing="ease-in-out"}
 
@@ -167,15 +177,17 @@ Arrangement on a large screen.
 
 <br/>
 
-::: r-vstack
+:::::: r-vstack
 ::: {data-id="box1" style="background:#46e7fd; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
 :::
+
 ::: {data-id="box2" style="background:#4739a2; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold;"}
 :::
+
 ::: {data-id="box3" style="background:#e18b22; width:80%; height:80px; margin:6px auto; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:bold;"}
 Data Visualisation
 :::
-:::
+::::::
 
 ## Concept
 
@@ -192,7 +204,7 @@ Click on the graphic to zoom in
 <br/>
 
 ::: {.fragment .fade-in-then-semi-out}
-Say [open seasame](https://osf.io/rg8s4/){preview-link="true"} (i.e. click the link) to see all metadata and code associated with data and analyses 
+Say [open seasame](https://en.wikipedia.org/wiki/Center_for_Open_Science#Open_Science_Framework){preview-link="true"} (i.e. click the link) to see all metadata and code associated with data and analyses
 :::
 
 <br/>

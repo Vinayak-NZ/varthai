@@ -32,46 +32,12 @@ format:
 ```{=html}
 <div class="container">
   <div class="full-bleed bg-black text-white">
-    <div class="phd-grid phd-grid--static no-expand" role="list">
-      <section class="phd-item static-item" role="listitem">
-        <div class="static-text">
-          <h4 class="font-rock">ART</h4>
-          <br>
-          <br>
-            <p class = "nav-page">On the left handside (or as the first row when viewed on a small screen), you will find artistic and abstract representations that reflect the inferences or interpretations made from the data.</p>
-            <br>
-            <p class = "nav-page">If you click on the artwork, it will expand to reveal the full piece, and you will find a hyperlink labelled "Behind the curtain" that leads to a Wikimedia Commons page describing the meaning behind the piece.</p>
-            <br>
-            <p class = "nav-page">To return to the other representations of the analyses, please click on the expanded artwork.</p>
-        </div>
-      </section>
-  
-      <section class="phd-item static-item" role="listitem">
-        <div class="static-text">
-          <h4><span style="font-family: 'Brush Script MT', cursive;">POETRY</span></h4>
-          <br>
-          <br>
-            <p class = "nav-page">In the middle (or on the second row when viewed on a small screen), you will find a poetic interpretation that reflects the inferences or patterns emerging from the data.</p> 
-            <br>
-            <p class = "nav-page">If you click on the word, it will expand to reveal the poem, and you will find a hyperlink labelled "More words about the matter" that leads to the publication of the research or a traditional reporting of the analyses.</p>
-            <br>
-            <p class = "nav-page">To return to the other representations of the analyses, please click on the poem.</p>
-        </div>
-      </section>
-  
-      <section class="phd-item static-item" role="listitem">
-        <div class="static-text">
-          <h4><span style="font-family: 'Courier New', Courier, monospace;">
-      DATA VISUALISATION</span></h4>
-          <br>
-          <br>
-            <p class = "nav-page">On the right handside (or as the last row when viewed on a small screen), you will find visualisations that represent patterns in the data.</p>
-            <br>
-            <p class = "nav-page">If you click on the graph or chart, it will expand to reveal the full chart or sequence of charts. You will also find a hyperlink labelled "Open seasame" that leads to the Open Science Framework (OSF) repository containing metadata and code from the analyses.</p>
-            <br>
-            <p class = "nav-page">To return to the other representations of the analyses, please click the white space outside the chart.</p>
-        </div>
-      </section>
+    <div class="slides-wrapper">
+      <iframe
+        src="slides/navigation_slides.html"
+        loading="lazy"
+        allow="fullscreen"
+      ></iframe>
     </div>
   </div>
 </div>
