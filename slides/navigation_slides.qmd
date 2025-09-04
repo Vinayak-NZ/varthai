@@ -19,7 +19,7 @@ format:
 
 ## Art {auto-animate="true" auto-animate-easing="ease-in-out"}
 
-Arrangement on a small screen.
+Arrangement on a large screen.
 
 <br/>
 
@@ -39,7 +39,7 @@ Art
 
 ## Art {auto-animate="true" auto-animate-easing="ease-in-out"}
 
-Arrangement on a large screen.
+Arrangement on a small screen.
 
 <br/>
 
@@ -85,7 +85,7 @@ Click the artwork again to go back to all three sections
 
 ## Poetry {auto-animate="true" auto-animate-easing="ease-in-out"}
 
-Arrangement on a small screen.
+Arrangement on a large screen.
 
 <br/>
 
@@ -105,7 +105,7 @@ Poetry
 
 ## Poetry {auto-animate="true" auto-animate-easing="ease-in-out"}
 
-Arrangement on a large screen.
+Arrangement on a small screen.
 
 <br/>
 
@@ -138,7 +138,7 @@ Click on the word to reveal the poem
 <br/>
 
 ::: {.fragment .fade-in-then-semi-out}
-Get [more words on the matter](https://scholar.google.com/citations?user=HrfPThQAAAAJ&hl=en&oi=ao){preview-link="true"} (i.e. click the link) and read the publication or manuscript
+Get [more words on the matter](https://www.sciencedirect.com/science/article/pii/S0033350625002938){target="_blank" rel="noopener"} and read the publication or manuscript
 :::
 
 <br/>
@@ -151,7 +151,7 @@ Click the poem to go back to all three sections
 
 ## Data Visualisation {auto-animate="true" auto-animate-easing="ease-in-out"}
 
-Arrangement on a small screen.
+Arrangement on a large screen.
 
 <br/>
 
@@ -171,7 +171,7 @@ Data Visualisation
 
 ## Data Visualisation {auto-animate="true" auto-animate-easing="ease-in-out"}
 
-Arrangement on a large screen.
+Arrangement on a small screen.
 
 <br/>
 
