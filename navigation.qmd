@@ -47,16 +47,17 @@ format:
 </section>
 ```
 
-
 ```{=html}
 
-<div class="full-bleed bg-white text-center">
-  <p class="lead mb-3"><h4>Jump to some data stories</h4></p>
-    <div class="social-logos jump-logos">
-      <a href="/phd.html" aria-label="Go to PhD page">
-        <img src="assets/img/icons/phd_hat.svg" alt="PhD">
-        <span>PhD</span>
-      </a>
-    </div>
-</div>
+<section id="after-nav-slides">
+  <div class="full-bleed bg-white text-center">
+    <p class="lead mb-3"><h4>Jump to some data stories</h4></p>
+      <div class="social-logos jump-logos">
+        <a href="/phd.html" aria-label="Go to PhD page">
+          <img src="assets/img/icons/phd_hat.svg" alt="PhD">
+          <span>PhD</span>
+        </a>
+      </div>
+  </div>
+</section>
 ```
