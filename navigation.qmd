@@ -22,7 +22,7 @@ format:
       <h2>DATA STORIES</h2>
 
       <div class="video-wrapper">
-      <iframe src="https://player.vimeo.com/video/1115309816?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Introduction to Data Stories">
+      <iframe title="Introduction to data stories" src="https://exquisite.tube/videos/embed/sKc75rLN6SStqnM9xeU2GC" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin">
       </iframe>
       </div>
     </div>
